@@ -16,6 +16,11 @@ const Header = styled.header`
   align-items: center;
 `;
 const CoinsList = styled.ul``;
+
+const Loader = styled.span`
+  text-align: center;
+  display: block;
+`;
 const Coin = styled.li`
   background-color: white;
   color: ${(props) => props.theme.bgColor};
@@ -49,6 +54,7 @@ interface CoinInterface {
 }
 function Coins() {
   const [coins, setCoins] = useState<CoinInterface[]>([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     (async () =>
@@ -57,6 +63,7 @@ function Coins() {
         url: "https://api.coinpaprika.com/v1/coins/", // 서버
       }).then(function (response) {
         setCoins(response.data.slice(0, 100));
+        setLoading(false);
       }))();
   }, []);
   return (
@@ -64,13 +71,18 @@ function Coins() {
       <Header>
         <Title>코인</Title>
       </Header>
-      <CoinsList>
-        {coins.map((coin) => (
-          <Coin key={coin.id}>
-            <Link to={`/${coin.id}`}>{coin.name} &rarr;</Link>
-          </Coin>
-        ))}
-      </CoinsList>
+
+      {loading ? (
+        <Loader>Loading...</Loader>
+      ) : (
+        <CoinsList>
+          {coins.map((coin) => (
+            <Coin key={coin.id}>
+              <Link to={`/${coin.id}`}>{coin.name} &rarr;</Link>
+            </Coin>
+          ))}
+        </CoinsList>
+      )}
     </Container>
   );
 }
