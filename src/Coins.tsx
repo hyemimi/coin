@@ -6,8 +6,13 @@ import axios from "axios";
 
 const Container = styled.div`
   padding: 0px 20px;
-  max-width: 480px;
+  max-width: 500px;
   margin: 0 auto;
+`;
+const Img = styled.img`
+  width: 35px;
+  height: 35 px;
+  margin-right: 10px;
 `;
 const Header = styled.header`
   height: 10vh;
@@ -24,13 +29,14 @@ const Loader = styled.span`
 const Coin = styled.li`
   background-color: white;
   color: ${(props) => props.theme.bgColor};
-  margin-bottom: 10px;
-  padding: 20px;
-  border-radius: 10px;
+  margin-bottom: 20px;
+  padding: 10px;
+  border-radius: 5px;
   a {
     padding: 20px;
+    display: flex;
     transition: color 0.2s ease-in;
-    display: block;
+    align-items: center;
   }
   &: hover {
     a {
@@ -78,7 +84,12 @@ function Coins() {
         <CoinsList>
           {coins.map((coin) => (
             <Coin key={coin.id}>
-              <Link to={`/${coin.id}`}>{coin.name} &rarr;</Link>
+              <Link to={`/${coin.id}`}>
+                <Img
+                  src={`https://coinicons-api.vercel.app/api/icon/${coin.symbol.toLowerCase()}`}
+                />
+                {coin.name} &rarr;
+              </Link>
             </Coin>
           ))}
         </CoinsList>
