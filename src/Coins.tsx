@@ -19,6 +19,7 @@ const Header = styled.header`
   display: flex;
   justify-content: center;
   align-items: center;
+  margin: 30px;
 `;
 const CoinsList = styled.ul``;
 
@@ -46,6 +47,7 @@ const Coin = styled.li`
 `;
 
 const Title = styled.h1`
+  font-size: 50px;
   color: ${(props) => props.theme.accentColor};
 `;
 
@@ -58,6 +60,7 @@ interface CoinInterface {
   is_active: boolean;
   type: string;
 }
+
 function Coins() {
   const [coins, setCoins] = useState<CoinInterface[]>([]);
   const [loading, setLoading] = useState(true);
@@ -84,7 +87,7 @@ function Coins() {
         <CoinsList>
           {coins.map((coin) => (
             <Coin key={coin.id}>
-              <Link to={`/${coin.id}`}>
+              <Link to={`/${coin.id}`} state={{ name: coin.name }}>
                 <Img
                   src={`https://coinicons-api.vercel.app/api/icon/${coin.symbol.toLowerCase()}`}
                 />
