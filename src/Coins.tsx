@@ -19,7 +19,7 @@ const Header = styled.header`
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: 30px;
+  margin : 30px;
 `;
 const CoinsList = styled.ul``;
 
