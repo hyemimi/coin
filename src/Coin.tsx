@@ -1,7 +1,9 @@
-import { useLocation, useParams } from "react-router-dom";
+import { useLocation, useParams, Outlet } from "react-router-dom";
 import styled from "styled-components";
 import { useEffect, useState } from "react";
 import axios from "axios";
+import Chart from "./routes/Chart";
+import Price from "./routes/Price";
 
 const Container = styled.div`
   padding: 0px 20px;
@@ -181,6 +183,7 @@ function Coin() {
               <span>{priceInfo?.max_supply}</span>
             </OverviewItem>
           </Overview>
+          <Outlet />
         </>
       )}
     </Container>
