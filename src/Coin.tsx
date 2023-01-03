@@ -204,7 +204,9 @@ function Coin() {
           </Overview>
           <Tabs>
             <Tab isActive={chartMatch !== null}>
-              <Link to="chart">Chart</Link>{" "}
+              <Link to="chart" state={{ coinId: coinId }}>
+                Chart
+              </Link>{" "}
             </Tab>
             <Tab isActive={priceMatch !== null}>
               <Link to="price">Price</Link>

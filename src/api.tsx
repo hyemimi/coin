@@ -17,3 +17,9 @@ export async function fetchPriceInfo(coinId: string) {
     .get(`https://api.coinpaprika.com/v1/tickers/${coinId}`)
     .then((res) => res.data);
 }
+
+export async function fetchCoinHistory(coinId: string) {
+  return await axios
+    .get(`https://ohlcv-api.nomadcoders.workers.dev/?coinId=${coinId}`)
+    .then((res) => res.data);
+}
