@@ -12,6 +12,7 @@ import Chart from "./routes/Chart";
 import Price from "./routes/Price";
 import { useQuery } from "@tanstack/react-query";
 import { fetchCoinInfo, fetchPriceInfo } from "./api";
+import { Helmet } from "react-helmet";
 
 const Container = styled.div`
   padding: 0px 20px;
@@ -156,7 +157,10 @@ function Coin() {
   const { state } = useLocation() as RouteState;
   const { data: InfoData, isLoading: InfoLoading } = useQuery<InfoData>(
     ["info", coinId],
-    () => fetchCoinInfo(coinId)
+    () => fetchCoinInfo(coinId),
+    {
+      refetchInterval: 5000,
+    }
   );
   const { data: PriceData, isLoading: PriceLoading } = useQuery<PriceData>(
     ["price", coinId],
@@ -168,6 +172,11 @@ function Coin() {
 
   return (
     <Container>
+      <Helmet>
+        <title>
+          {state?.name ? state.name : loading ? "Loading..." : InfoData?.name}
+        </title>
+      </Helmet>
       <Header>
         <Title>
           {state?.name ? state.name : loading ? "Loading..." : InfoData?.name}
@@ -187,8 +196,8 @@ function Coin() {
               <span>${InfoData?.symbol}</span>
             </OverviewItem>
             <OverviewItem>
-              <span>Open Source:</span>
-              <span>{InfoData?.open_source ? "Yes" : "No"}</span>
+              <span>Price:</span>
+              <span>{PriceData?.quotes.USD.price.toFixed(3)}</span>
             </OverviewItem>
           </Overview>
           <Description>{InfoData?.description}</Description>
