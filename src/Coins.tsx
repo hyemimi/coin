@@ -30,7 +30,7 @@ const Loader = styled.span`
   display: block;
 `;
 const Coin = styled.li`
-  background-color: ${(props) => props.theme.accentColor};
+  background-color: white;
   color: ${(props) => props.theme.bgColor};
   margin-bottom: 20px;
   padding: 10px;
