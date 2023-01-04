@@ -86,6 +86,16 @@ const Tab = styled.span<{ isActive: boolean }>`
     display: block;
   }
 `;
+const Button = styled.button`
+  display: flex;
+`;
+
+const ButtonArea = styled.div`
+  display: flex;
+  justify-content: flex-end;
+  background-color: ${(props) => props.theme.bgColor};
+  padding: 10px 10px;
+`;
 interface RouteParams {
   coinId: string;
 }
@@ -182,6 +192,11 @@ function Coin() {
           {state?.name ? state.name : loading ? "Loading..." : InfoData?.name}
         </Title>
       </Header>
+      <ButtonArea>
+        <Link to={"/"}>
+          <Button>🏠</Button>
+        </Link>
+      </ButtonArea>
       {loading ? (
         <Loader>Loading ...</Loader>
       ) : (
