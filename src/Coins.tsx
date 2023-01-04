@@ -5,6 +5,7 @@ import { useState, useEffect } from "react";
 import { fetchCoins } from "./api";
 import { useQuery } from "@tanstack/react-query";
 import { Helmet } from "react-helmet";
+import { Button, ButtonArea } from "./Coin";
 
 const Container = styled.div`
   padding: 0px 20px;
@@ -77,6 +78,11 @@ function Coins() {
       <Header>
         <Title>코인</Title>
       </Header>
+      <ButtonArea>
+        <Link to={"/"}>
+          <Button>other mode</Button>
+        </Link>
+      </ButtonArea>
 
       {isLoading ? (
         <Loader>Loading...</Loader>

@@ -86,11 +86,11 @@ const Tab = styled.span<{ isActive: boolean }>`
     display: block;
   }
 `;
-const Button = styled.button`
+export const Button = styled.button`
   display: flex;
 `;
 
-const ButtonArea = styled.div`
+export const ButtonArea = styled.div`
   display: flex;
   justify-content: flex-end;
   background-color: ${(props) => props.theme.bgColor};
