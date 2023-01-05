@@ -1,7 +1,13 @@
-import styled, { createGlobalStyle, keyframes } from "styled-components";
+import styled, {
+  createGlobalStyle,
+  keyframes,
+  ThemeProvider,
+} from "styled-components";
 import { useState } from "react";
 import Router from "./routes/Router";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
+import { lighttheme, darktheme } from "./theme";
+
 const GlobalStyle = createGlobalStyle`
 @import url('https://fonts.googleapis.com/css2?family=Bungee&family=Source+Sans+Pro:wght@300;400&display=swap');
 html, body, div, span, applet, object, iframe,
@@ -65,12 +71,31 @@ a{
   color : inherit;
 }
 `;
+
+const Button = styled.button`
+  background-color: ${(props) => props.theme.accentColor};
+  color: ${(props) => props.theme.textColor};
+  border-radius: 10px;
+`;
+
 function App() {
+  const [theme, setTheme] = useState(lighttheme);
+  const toggleTheme = () => {
+    if (theme === lighttheme) {
+      setTheme(darktheme);
+    } else {
+      setTheme(lighttheme);
+    }
+  };
+
   return (
     <>
-      <GlobalStyle />
-      <Router />
-      <ReactQueryDevtools initialIsOpen={true} />
+      <ThemeProvider theme={theme}>
+        <GlobalStyle />
+        <Button onClick={() => toggleTheme()}>💫Another Theme💫</Button>
+        <Router />
+        <ReactQueryDevtools initialIsOpen={true} />
+      </ThemeProvider>
     </>
   );
 }

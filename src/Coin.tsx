@@ -197,6 +197,7 @@ function Coin() {
           <Button>🏠</Button>
         </Link>
       </ButtonArea>
+     
       {loading ? (
         <Loader>Loading ...</Loader>
       ) : (
