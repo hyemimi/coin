@@ -74,7 +74,7 @@ a{
 
 const Button = styled.button`
   background-color: ${(props) => props.theme.accentColor};
-  color: ${(props) => props.theme.textColor};
+  color: ${(props) => props.theme.bgColor};
   border-radius: 10px;
 `;
 
