@@ -1,4 +1,4 @@
-<h1>Coin Tracker clone coding ▶️ https://hyemimi.github.io/coin</h1>
+<h1>Coin Tracker clone coding 💙 https://hyemimi.github.io/coin</h1>
 
 
 <h3 align=center>⚒️ React + TypeScript + Styled-components ⚒️</h2>
