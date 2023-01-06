@@ -63,6 +63,7 @@ const OverviewItem = styled.div`
 `;
 const Description = styled.p`
   margin: 20px 0px;
+  color: ${(props) => props.theme.accentColor};
 `;
 
 const Tabs = styled.div`
@@ -81,7 +82,7 @@ const Tab = styled.span<{ isActive: boolean }>`
   padding: 7px 0px;
   border-radius: 10px;
   color: ${(props) =>
-    props.isActive ? props.theme.accentColor : props.theme.textColor};
+    props.isActive ? props.theme.hoverColor : props.theme.textColor};
   a {
     display: block;
   }
@@ -197,7 +198,7 @@ function Coin() {
           <Button>🏠</Button>
         </Link>
       </ButtonArea>
-     
+
       {loading ? (
         <Loader>Loading ...</Loader>
       ) : (

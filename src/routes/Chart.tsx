@@ -2,19 +2,25 @@ import { useParams, useLocation } from "react-router-dom";
 import { fetchCoinHistory } from "../api";
 import { useQuery } from "@tanstack/react-query";
 import ApexCharts from "react-apexcharts";
+import { darktheme } from "../theme";
 
 interface RouteState {
   state: { coinId: string };
 }
 interface IHistorical {
-  time_open: string;
-  time_close: string;
-  open: number;
-  high: number;
-  low: number;
-  close: number;
-  volume: number;
-  market_cap: number;
+  time_open: number;
+  time_close: number;
+  open: string;
+  high: string;
+  low: string;
+  close: string;
+  volume: string;
+  market_cap: string;
+}
+
+interface Icandle {
+  x: Date;
+  y: number[];
 }
 function Chart() {
   const { state } = useLocation() as RouteState;
@@ -25,11 +31,21 @@ function Chart() {
   return (
     <div>
       <ApexCharts
-        type="line"
+        type="candlestick"
         series={[
           {
-            name: "sales",
-            data: data?.map((price) => price.close) as number[],
+            name: "Price",
+            data: data?.map((price) => {
+              return {
+                x: new Date(price.time_open * 1000),
+                y: [
+                  parseFloat(price.open),
+                  parseFloat(price.high),
+                  parseFloat(price.low),
+                  parseFloat(price.close),
+                ],
+              };
+            }) as Icandle[],
           },
         ]}
         options={{
@@ -37,43 +53,39 @@ function Chart() {
             mode: "dark",
           },
           chart: {
+            height: 400,
+            width: 600,
             toolbar: {
               show: false,
             },
-            height: 300,
-            width: 600,
             background: "transparent",
           },
-
           grid: {
             show: false,
-          },
-          stroke: {
-            curve: "smooth",
-            width: 4,
           },
           yaxis: {
             show: false,
           },
           xaxis: {
-            axisBorder: { show: false },
-            axisTicks: { show: false },
-            labels: { show: false },
+            labels: {
+              show: false,
+            },
+            axisTicks: {
+              show: false,
+            },
+            axisBorder: {
+              show: false,
+            },
             type: "datetime",
-            categories: data?.map((price) => price.time_close),
           },
-          fill: {
-            type: "gradient",
-            gradient: { gradientToColors: ["blue"], stops: [0, 100] },
-          },
-          colors: ["red"],
+
           tooltip: {
             y: {
               formatter: (value) => `$${value.toFixed(2)}`,
             },
           },
         }}
-      ></ApexCharts>
+      />
     </div>
   );
 }

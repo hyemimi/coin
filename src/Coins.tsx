@@ -31,7 +31,7 @@ const Loader = styled.span`
   display: block;
 `;
 const Coin = styled.li`
-  background-color: white;
+  background-color: ${(props) => props.theme.accentColor};
   color: ${(props) => props.theme.bgColor};
   margin-bottom: 20px;
   padding: 10px;
@@ -44,7 +44,7 @@ const Coin = styled.li`
   }
   &: hover {
     a {
-      color: ${(props) => props.theme.accentColor};
+      color: ${(props) => props.theme.hoverColor};
     }
   }
 `;
@@ -73,10 +73,10 @@ function Coins() {
   return (
     <Container>
       <Helmet>
-        <title>코인</title>
+        <title>CoinTracker</title>
       </Helmet>
       <Header>
-        <Title>코인</Title>
+        <Title>Coin Tracker</Title>
       </Header>
 
       {isLoading ? (
