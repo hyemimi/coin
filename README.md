@@ -15,7 +15,8 @@
     구글링 한 결과, 기존의 react-query 말고 `@tanstack/react-query`를 install하고 사용해야 한다.
   - api를 불러올 때, useState, useEffect로 상태관리를 하지 않아도 되어서 매우 편리해졌다.
   - devtool이 상당히 편리하다
-  
+4. ApexCharts
+  - 를 쉽고 예쁘게 만들 수 있었다.
 <h4><느낀점></h4>
 
 TypeScript를 처음 배우고 사용해보았다. 개발 도중 실수를 줄일 수 있다는 것은 큰 메리트지만 type 정의를 해주는 일이 생각보다 쉽지 않았다.
