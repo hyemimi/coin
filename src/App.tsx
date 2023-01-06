@@ -9,7 +9,7 @@ import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import { lighttheme, darktheme } from "./theme";
 
 const GlobalStyle = createGlobalStyle`
-@import url('https://fonts.googleapis.com/css2?family=Bungee&family=Source+Sans+Pro:wght@300;400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bungee&family=Signika+Negative&family=Source+Sans+Pro:wght@300;400&display=swap');
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
@@ -62,7 +62,7 @@ table {
 }
 body{
   
-  font-family: 'Source Sans Pro', sans-serif;
+  font-family: 'Signika Negative', sans-serif;
  background-color : ${(props) => props.theme.bgColor};
  color:${(props) => props.theme.textColor};
 }
@@ -74,8 +74,9 @@ a{
 
 const Button = styled.button`
   background-color: ${(props) => props.theme.accentColor};
-  color: ${(props) => props.theme.bgColor};
-  border-radius: 10px;
+  color: ${(props) => props.theme.hoverColor};
+  font-size: 100%;
+  border-radius: 50%;
 `;
 
 function App() {
@@ -92,7 +93,9 @@ function App() {
     <>
       <ThemeProvider theme={theme}>
         <GlobalStyle />
-        <Button onClick={() => toggleTheme()}>💫Another Theme💫</Button>
+        <Button onClick={() => toggleTheme()}>
+          {theme === lighttheme ? "🌙" : "☀️"}
+        </Button>
         <Router />
         <ReactQueryDevtools initialIsOpen={true} />
       </ThemeProvider>

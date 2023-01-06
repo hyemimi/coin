@@ -51,38 +51,66 @@ percent_change_1y: -60.06
       </Overview>
       <Overview>
         {" "}
-        {state.priceData.percent_change_30m >= 0 ? "📈" : "📉"} 30m :{" "}
-        {state.priceData.percent_change_30m}%
+        {state.priceData.percent_change_30m > 0
+          ? "📈"
+          : state.priceData.percent_change_30m < 0
+          ? "📉"
+          : ""}{" "}
+        30m : {state.priceData.percent_change_30m}%
       </Overview>
       <Overview>
         {" "}
-        {state.priceData.percent_change_1h >= 0 ? "📈" : "📉"} 1h :{" "}
-        {state.priceData.percent_change_1h}%{" "}
+        {state.priceData.percent_change_1h > 0
+          ? "📈"
+          : state.priceData.percent_change_1h < 0
+          ? "📉"
+          : ""}{" "}
+        1h : {state.priceData.percent_change_1h}%{" "}
       </Overview>
       <Overview>
         {" "}
-        {state.priceData.percent_change_6h >= 0 ? "📈" : "📉"} 6h :{" "}
-        {state.priceData.percent_change_6h}%{" "}
+        {state.priceData.percent_change_6h > 0
+          ? "📈"
+          : state.priceData.percent_change_6h < 0
+          ? "📉"
+          : ""}{" "}
+        6h : {state.priceData.percent_change_6h}%{" "}
       </Overview>
       <Overview>
         {" "}
-        {state.priceData.percent_change_12h >= 0 ? "📈" : "📉"} 12h :{" "}
-        {state.priceData.percent_change_12h}%{" "}
+        {state.priceData.percent_change_12h > 0
+          ? "📈"
+          : state.priceData.percent_change_12h < 0
+          ? "📉"
+          : ""}{" "}
+        12h : {state.priceData.percent_change_12h}%{" "}
       </Overview>
       <Overview>
         {" "}
-        {state.priceData.percent_change_24h >= 0 ? "📈" : "📉"} 24h :{" "}
-        {state.priceData.percent_change_24h}%{" "}
+        {state.priceData.percent_change_24h > 0
+          ? "📈"
+          : state.priceData.percent_change_24h < 0
+          ? "📉"
+          : ""}{" "}
+        24h : {state.priceData.percent_change_24h}%{" "}
       </Overview>
       <Overview>
         {" "}
-        {state.priceData.percent_change_30d >= 0 ? "📈" : "📉"} 30d :{" "}
-        {state.priceData.percent_change_30d}%{" "}
+        {state.priceData.percent_change_30d > 0
+          ? "📈"
+          : state.priceData.percent_change_30d < 0
+          ? "📉"
+          : ""}{" "}
+        30d : {state.priceData.percent_change_30d}%{" "}
       </Overview>
       <Overview>
         {" "}
-        {state.priceData.percent_change_1y >= 0 ? "📈" : "📉"} 1y :{" "}
-        {state.priceData.percent_change_1y}%{" "}
+        {state.priceData.percent_change_1y > 0
+          ? "📈"
+          : state.priceData.percent_change_1y < 0
+          ? "📉"
+          : ""}{" "}
+        1y : {state.priceData.percent_change_1y}%{" "}
       </Overview>
     </>
   );
