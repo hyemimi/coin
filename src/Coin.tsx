@@ -235,7 +235,9 @@ function Coin() {
               </Link>{" "}
             </Tab>
             <Tab isActive={priceMatch !== null}>
-              <Link to="price">Price</Link>
+              <Link to="price" state={{ priceData: PriceData?.quotes.USD }}>
+                Price
+              </Link>
             </Tab>
           </Tabs>
 
