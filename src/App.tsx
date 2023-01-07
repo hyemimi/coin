@@ -7,6 +7,8 @@ import { useState } from "react";
 import Router from "./routes/Router";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import { lighttheme, darktheme } from "./theme";
+import { isDarkAtom } from "./atoms";
+import { useRecoilValue, useSetRecoilState } from "recoil";
 
 const GlobalStyle = createGlobalStyle`
 @import url('https://fonts.googleapis.com/css2?family=Bungee&family=Signika+Negative&family=Source+Sans+Pro:wght@300;400&display=swap');
@@ -80,21 +82,15 @@ const Button = styled.button`
 `;
 
 function App() {
-  const [theme, setTheme] = useState(lighttheme);
-  const toggleTheme = () => {
-    if (theme === lighttheme) {
-      setTheme(darktheme);
-    } else {
-      setTheme(lighttheme);
-    }
-  };
+  const isDark = useRecoilValue(isDarkAtom);
+  const setDarkAtom = useSetRecoilState(isDarkAtom);
 
   return (
     <>
-      <ThemeProvider theme={theme}>
+      <ThemeProvider theme={isDark ? darktheme : lighttheme}>
         <GlobalStyle />
-        <Button onClick={() => toggleTheme()}>
-          {theme === lighttheme ? "🌙" : "☀️"}
+        <Button onClick={() => setDarkAtom((prev) => !prev)}>
+          {isDark ? "☀️" : "🌙"}
         </Button>
         <Router />
         <ReactQueryDevtools initialIsOpen={true} />
